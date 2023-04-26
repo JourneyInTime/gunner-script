@@ -956,7 +956,7 @@ module.exports = function gunner(dispatch) {
 
 	function abnormalityx(idx, durx) {
 		if (!ABNORMALITY_TOGGLE) { return; }
-		dispatch.toClient('S_ABNORMALITY_BEGIN', 5, {
+		dispatch.toClient('S_ABNORMALITY_BEGIN', 4, {
 			target: cid,
 			source: cid,
 			id: idx,
@@ -968,7 +968,7 @@ module.exports = function gunner(dispatch) {
 		});
 	}
 
-	dispatch.hook('S_ABNORMALITY_BEGIN', 5, (event) => {
+	dispatch.hook('S_ABNORMALITY_BEGIN', 4, (event) => {
 		if (!enabled) return;
 		if (event.target !== cid) {
 			return;
@@ -1113,7 +1113,7 @@ module.exports = function gunner(dispatch) {
 				l2 = setTimeout(function (event) { disabSkill[(event.skill.id +1)] = false; }, GLOBAL_LOCK_DELAY * 2, event);
 				fakeEnd_sorc_dist(event, S_PointB_D,0);
 				if (!PB_SLOW) {
-					dispatch.toClient('S_ABNORMALITY_BEGIN', 5, {
+					dispatch.toClient('S_ABNORMALITY_BEGIN', 4, {
 						target: cid,
 						source: cid,
 						id: 10152000,
@@ -1123,7 +1123,7 @@ module.exports = function gunner(dispatch) {
 						unk2: 0,
 						unk3: 0,
 					});
-					dispatch.toClient('S_ABNORMALITY_BEGIN', 5, {
+					dispatch.toClient('S_ABNORMALITY_BEGIN', 4, {
 						target: cid,
 						source: cid,
 						id: 10152001,
@@ -1690,7 +1690,7 @@ module.exports = function gunner(dispatch) {
 		}
 	});
     
-	dispatch.hook('S_PLAYER_STAT_UPDATE', 16, (event) => {
+	dispatch.hook('S_PLAYER_STAT_UPDATE', 14, (event) => {
 		if (!enabled) return;
 		aspd = (event.attackSpeed + event.attackSpeedBonus) /100;
 	});
